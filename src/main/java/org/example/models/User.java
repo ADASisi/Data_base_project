@@ -73,4 +73,24 @@ public class User {
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
     }
+
+    public void addPermission(Permission permission) {
+        this.permissions.add(permission);
+        permission.getUsers().add(this);
+    }
+
+    public void removePermission(Permission permission) {
+        this.permissions.remove(permission);
+        permission.getUsers().remove(this);
+    }
+
+    public void addGroup(Group group) {
+        this.groups.add(group);
+        group.getUsers().add(this);
+    }
+
+    public void removeGroup(Group group) {
+        this.groups.remove(group);
+        group.getUsers().remove(this);
+    }
 }
